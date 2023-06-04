@@ -1,5 +1,5 @@
 
-import bg from './images/cloud-bg.png'; 
+import bg from './images/cloud-bg-min.png';
 import styled from 'styled-components';
 import { MainLayout } from './styles/layouts';
 import Orb from './components/Orb/Orb';
@@ -19,13 +19,10 @@ function App() {
 const AppStyled = styled.div`
     height: 100vh;
     background-image: url(${props => props.bgImg});
+    //background-color: #3daeeb;
     background-size: cover;
     position: relative;
 
 `;
-
-
-
-
 
 export default App;
