@@ -1,12 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+
+import bg from './images/cloud-bg.png'; 
+import styled from 'styled-components';
+import { MainLayout } from './styles/layouts';
+import Orb from './components/Orb/Orb';
+import Navigation from './components/Navigation/Navigation';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <AppStyled bgImg={bg} className="App">
+      <Orb />
+      <MainLayout>
+        <Navigation />
+      </MainLayout>
+    </AppStyled>
   );
 }
+
+const AppStyled = styled.div`
+    height: 100vh;
+    background-image: url(${props => props.bgImg});
+    background-size: cover;
+    position: relative;
+
+`;
+
+
+
+
 
 export default App;
