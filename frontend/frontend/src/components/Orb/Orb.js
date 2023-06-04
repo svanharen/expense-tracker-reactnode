@@ -29,7 +29,7 @@ function Orb() {
         background: linear-gradient(180deg, #3daeeb 0%, #edf2f5 100%);
         filter: blur(400px);
         animation: ${moveOrb} 15s alternate linear infinite;
-        opacity: 0.3;
+        opacity: 0.5;
         
     `;
   return (
