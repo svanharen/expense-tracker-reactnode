@@ -91,16 +91,16 @@ const NavStyled = styled.nav`
             position: relative;
 
             i{
-                color: rgba(34, 34, 96, 0.8);
+                color: rgba(34, 34, 96, 0.6);
                 font-size: 1.4rem;
                 transition: all .4s ease-in-out;
             }
         }
     }
     .active{
-        color: rgba(34, 34, 96, 1);
+        color: rgba(34, 34, 96, 1) !important;
         i{
-            color: rgba(34, 34, 96, 1);
+            color: rgba(34, 34, 96, 1) !important;
         }
         &::before{
             content: "";

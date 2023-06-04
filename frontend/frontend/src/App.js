@@ -10,10 +10,14 @@ import Transactions from './components/Transactions/Transactions';
 import Incomes from './components/Incomes/Incomes';
 import Expenses from './components/Expenses/Expenses';
 import Main from './components/Main/Main';
+import { useGlobalContext } from './context/globalContext';
 
 function App() {
 
   const [selectActive, setSelectActive] = useState(1)
+
+  const global = useGlobalContext(); // Initialize the global context
+  //console.log(global)
 
   // Use useMemo to memoize the Orb component so that it doesn't re-render when the selectActive state changes
   const orbMemo = useMemo(() => {
@@ -31,7 +35,7 @@ function App() {
       case 4:
         return <Expenses />
       default:
-        return 
+        return <Dashboard />
     }
   }
 
