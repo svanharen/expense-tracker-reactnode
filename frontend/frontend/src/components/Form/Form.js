@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
 import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { useGlobalContext } from '../../context/globalContext';
+import Button from '../Button/Button';
+import { plus } from '../../utils/icons';
 
 function Form() {
 
@@ -25,8 +28,9 @@ function Form() {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        
         addIncome(inputState);
+        e.preventDefault(); //Prevent page refresh
     }
 
   return (
@@ -51,12 +55,12 @@ function Form() {
         </div>
         <div className="input-content">
             <DatePicker
-                id="date"
+                id='date'
                 placeholderText='Enter a date'
                 selected={date}
-                dateFormat={'dd/MM/yyyy'}
-                onChange={(date) => setInputState({...inputState, date})}
-            
+                dateFormat="dd/MM/yyyy"
+                onChange={(date) =>{ setInputState({...inputState, date: date})
+                }}
             />
         </div>
         <div className="selects input-content">
@@ -87,13 +91,63 @@ function Form() {
             />
         </div>
         <div className="submit-btn">
-            <button type='submit'>Add Income</button>
+            <Button 
+                name={"Add Income"}
+                icon={plus}
+                bPad={'.8rem 1.6rem'}
+                bRad={'30px'}
+                bg={'var(--color-accent)'}
+                color={'#000'}
+                />
         </div>
     </FormStyled>
   )
 }
 
 
-const FormStyled = styled.div`
+const FormStyled = styled.form`
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    input, textarea, select {
+        font-family: inherit;
+        font-size: inherit;
+        outline: none;
+        border: none;
+        padding: .5rem 1rem;
+        border-radius: 5px;
+        border: 2px solid #fff;
+        background: transparent;
+        resize: none;
+        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.1);
+        color: rgba(34, 34, 96, 0.9);
+        &::placeholder {
+            color: rgba(34, 34, 96, 0.4)
+        }
+    }
+    .input-content{
+        input{
+            width: 100%;
+        }
+    }
+    .selects{
+        display: flex;
+        justify-content: flex-start;
+        select{
+            color: rgba(34, 34, 96, 0.4);
+            &:focus, &:active{
+                color: rgba(34, 34, 96, 0.9);
+            }
+        }
+    }
+    .submit-btn{
+        button{
+            box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.1);
+            &:hover{
+                background: var(--color-green) !important;
+            }
+        }
+    }
 `;
 export default Form

@@ -16,8 +16,8 @@ function App() {
 
   const [selectActive, setSelectActive] = useState(1)
 
-  const global = useGlobalContext(); // Initialize the global context
-  //console.log(global)
+  const global = useGlobalContext(); 
+  console.log(global)
 
   // Use useMemo to memoize the Orb component so that it doesn't re-render when the selectActive state changes
   const orbMemo = useMemo(() => {

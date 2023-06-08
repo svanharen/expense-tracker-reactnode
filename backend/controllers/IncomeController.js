@@ -2,14 +2,14 @@ const Income = require('../models/IncomeModel');
 
 // Add income
 exports.addIncome = async (req, res) => {
-    const {title, amount, category, description, date} = req.body;
+    const {title, amount, date, category, description}  = req.body;
 
     const income = Income({
         title,
         amount,
+        date,
         category,
-        description,
-        date
+        description
     })
     try{
         //validations
