@@ -25,7 +25,7 @@ exports.addExpense = async (req, res) => {
         res.status(500).json({errorMessage: 'Internal server error'})
     }
 
-    console.log(expense);
+    //console.log(expense);
 }
 
 // Get all expenses
