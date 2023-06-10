@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useGlobalContext } from '../../context/globalContext';
 import Button from '../Button/Button';
-import { plus } from '../../utils/icons';
+import { icons } from '../../utils/icons';
 
 function Form() {
 
@@ -29,12 +29,12 @@ function Form() {
 
     const handleSubmit = (e) => {
         
-        addIncome(inputState);
         e.preventDefault(); //Prevent page refresh
+        addIncome(inputState); 
     }
 
   return (
-    <FormStyled onSubmit={handleSubmit}>
+    <FormStyled onSubmit={handleSubmit} >
         <div className="input-content">
             <input
                 type="text"
@@ -63,6 +63,16 @@ function Form() {
                 }}
             />
         </div>
+       
+        <div className="input-content">
+            <textarea
+                type="text"
+                value={description}
+                name={'description'}
+                placeholder={'Description'}
+                onChange={handleInput('description')}
+            />
+        </div>
         <div className="selects input-content">
             <select 
                 required 
@@ -75,25 +85,16 @@ function Form() {
                 <option value="paycheck">Paycheck</option>
                 <option value="gift">Gift</option>
                 <option value="investment">Investment</option>
-                <option value="stock">Stock</option>
+                <option value="trade">Trade</option>
                 <option value="crypto">Crypto</option>
                 <option value="bank-transfer">Bank Transfer</option>
                 <option value="other">Other</option>
             </select>
         </div>
-        <div className="input-content">
-            <textarea
-                type="text"
-                value={description}
-                name={'description'}
-                placeholder={'Description'}
-                onChange={handleInput('description')}
-            />
-        </div>
         <div className="submit-btn">
             <Button 
                 name={"Add Income"}
-                icon={plus}
+                icon={icons.plus}
                 bPad={'.8rem 1.6rem'}
                 bRad={'30px'}
                 bg={'var(--color-accent)'}
@@ -139,6 +140,7 @@ const FormStyled = styled.form`
             &:focus, &:active{
                 color: rgba(34, 34, 96, 0.9);
             }
+            font-size: 1rem;
         }
     }
     .submit-btn{

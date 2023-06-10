@@ -18,6 +18,7 @@ export const GlobalProvider = ({children}) => {
         .catch((err) =>{
             setError(err.response.data.message);
         })
+        getIncomes(); //Refresh incomes list
     }
 
     const getIncomes = async () => {
@@ -26,9 +27,25 @@ export const GlobalProvider = ({children}) => {
             setError(err.response.data.message);
         })
         setIncomes(response.data);
-        
     }    
 
+    const deleteIncome = async (id) => {
+        const response = await axios.delete(`${BASE_URL}/delete-income/${id}`)
+        .catch((err) =>{
+            setError(err.response.data.message);
+        })
+        getIncomes(); //Refresh incomes list
+    }
+
+    const totalIncome = () => {
+        let total = 0;
+        incomes.forEach((income) => {
+            total += income.amount;
+        })
+        
+        return total;
+    }
+    console.log('totalIncome: ', totalIncome());
     
 
     return (
@@ -36,6 +53,8 @@ export const GlobalProvider = ({children}) => {
             value={{
                 addIncome,
                 getIncomes,
+                deleteIncome,
+                totalIncome,
                 incomes,
                 
             }}

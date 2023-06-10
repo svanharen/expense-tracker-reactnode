@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import avatar from '../../images/user.png'
 import { menuItems } from '../../utils/menuItems'
-import { signout } from '../../utils/icons'
+import { icons } from '../../utils/icons'
 
 function Navigation({selectActive, setSelectActive}) {
 
@@ -32,7 +32,7 @@ function Navigation({selectActive, setSelectActive}) {
             </ul>
             <div className='bottom-nav'>
                 <li>
-                {signout} Sign Out
+                {icons.signout} Sign Out
                 </li>
             </div>
         </NavStyled>
