@@ -1,9 +1,9 @@
 
 // Icons
 export const icons ={
-    dashboard: <i className="fa-solid fa-chart-line"></i>,
-    transactions: <i className="fa-solid fa-cash-register"></i>,
-    incomes:         <i className="fa-solid fa-money-bill"></i>,
+    dashboard:      <i className="fa-solid fa-chart-line"></i>,
+    transactions:   <i className="fa-solid fa-cash-register"></i>,
+    incomes:        <i className="fa-solid fa-money-bill"></i>,
     expenses:       <i className="fa-solid fa-newspaper"></i>,
     signout:        <i className="fa-solid fa-right-from-bracket"></i>,
     plus:           <i className="fa-solid fa-plus"></i>,
@@ -17,5 +17,11 @@ export const icons ={
     crypto:         <i className="fa-solid fa-coins"></i>,
     bankTransfer:   <i className="fa-solid fa-university"></i>,
     other:          <i className="fa-solid fa-ellipsis-h"></i>,
+    home:           <i className="fa-solid fa-house"></i>,
+    grocery:        <i className="fa-solid fa-basket-shopping"></i>,
+    drinks:         <i className="fa-solid fa-martini-glass"></i>,
+    dinner:         <i className="fa-solid fa-utensils"></i>,
+    clothes:        <i className="fa-solid fa-shirt"></i>,
+    util:           <i className="fa-solid fa-plug"></i>    
 
 }

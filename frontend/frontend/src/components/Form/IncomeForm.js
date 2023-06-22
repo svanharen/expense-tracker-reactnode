@@ -6,7 +6,7 @@ import { useGlobalContext } from '../../context/globalContext';
 import Button from '../Button/Button';
 import { icons } from '../../utils/icons';
 
-function Form() {
+function IncomeForm() {
 
     const {addIncome} = useGlobalContext();
 
@@ -30,11 +30,18 @@ function Form() {
     const handleSubmit = (e) => {
         
         e.preventDefault(); //Prevent page refresh
-        addIncome(inputState); 
+        addIncome(inputState);
+        setInputState({     //Reset form
+            title: '',
+            amount: '',
+            date: '',
+            category: '',
+            description: '',
+        })
     }
 
   return (
-    <FormStyled onSubmit={handleSubmit} >
+    <IncomeFormStyled onSubmit={handleSubmit} >
         <div className="input-content">
             <input
                 type="text"
@@ -93,7 +100,7 @@ function Form() {
         </div>
         <div className="submit-btn">
             <Button 
-                name={"Add Income"}
+                name={"Add"}
                 icon={icons.plus}
                 bPad={'.8rem 1.6rem'}
                 bRad={'30px'}
@@ -101,12 +108,12 @@ function Form() {
                 color={'#000'}
                 />
         </div>
-    </FormStyled>
+    </IncomeFormStyled>
   )
 }
 
 
-const FormStyled = styled.form`
+const IncomeFormStyled = styled.form`
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -152,4 +159,4 @@ const FormStyled = styled.form`
         }
     }
 `;
-export default Form
+export default IncomeForm

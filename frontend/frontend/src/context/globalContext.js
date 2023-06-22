@@ -13,6 +13,7 @@ export const GlobalProvider = ({children}) => {
     const [error, setError]         = useState(null);
 
 
+    // INCOME FUNCTIONS
     const addIncome = async (income) => {
         const response = await axios.post(`${BASE_URL}/add-income`, income)
         .catch((err) =>{
@@ -45,8 +46,53 @@ export const GlobalProvider = ({children}) => {
         
         return total;
     }
-    console.log('totalIncome: ', totalIncome());
+    //console.log('totalIncome: ', totalIncome());
     
+
+
+    //EXPENSES FUNCTIONS
+    const getExpenses = async () => {
+        const response = await axios.get(`${BASE_URL}/get-expenses`)
+        .catch((err) =>{
+            setError(err.response.data.message);
+        })
+        setExpenses(response.data);
+    }
+
+    const addExpense = async (expense) => {
+        const response = await axios.post(`${BASE_URL}/add-expense`, expense)
+        .catch((err) =>{
+            setError(err.response.data.message);
+        })
+        getExpenses(); //Refresh expenses list
+    }
+
+    const deleteExpense = async (id) => {
+        const response = await axios.delete(`${BASE_URL}/delete-expense/${id}`)
+        .catch((err) =>{
+            setError(err.response.data.message);
+        })
+        getExpenses(); //Refresh incomes list
+    }
+
+    const totalExpense = () => {
+        let total = 0;
+        expenses.forEach((expense) => {
+            total += expense.amount;
+        })
+        
+        return total;
+    }
+
+    //DASHBOARD FUNCTIONS
+    const transactionHistory = () => {
+        const transactions = [...incomes, ...expenses];
+        transactions.sort((a,b) => {
+            return new Date(b.createdAt) - new Date(a.createdAt);
+        })
+        return transactions.slice(0, 5);
+    }
+
 
     return (
         <GlobalContext.Provider
@@ -56,7 +102,12 @@ export const GlobalProvider = ({children}) => {
                 deleteIncome,
                 totalIncome,
                 incomes,
-                
+                addExpense,
+                getExpenses,
+                deleteExpense,
+                totalExpense,
+                expenses,
+                transactionHistory,
             }}
         >
             {children}
